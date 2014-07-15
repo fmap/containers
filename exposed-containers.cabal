@@ -1,16 +1,18 @@
-name: containers
+name: exposed-containers
 version: 0.5.5.1
 license: BSD3
 license-file: LICENSE
 maintainer: fox@ucw.cz
 bug-reports: https://github.com/haskell/containers/issues
-synopsis: Assorted concrete container types
+synopsis: A distribution of the 'containers' package, with all modules exposed.
 category: Data Structures
 description:
-    This package contains efficient general-purpose implementations
-    of various basic immutable container types.  The declared cost of
-    each operation is either worst-case or amortized, but remains
-    valid even if structures are shared.
+    The source package contains efficient general-purpose implementations of
+    various basic immutable container types.  The declared cost of each
+    operation is either worst-case or amortized, but remains valid even if
+    structures are shared.
+
+    Here we redistribute it, but with hidden modules exposed.
 build-type: Simple
 cabal-version:  >=1.8
 extra-source-files:
@@ -28,7 +30,7 @@ extra-source-files:
 
 source-repository head
     type:     git
-    location: http://github.com/haskell/containers.git
+    location: http://github.com/fmap/exposed-containers.git
 
 Library
     build-depends: base >= 4.2 && < 5, array, deepseq >= 1.2 && < 1.4
@@ -46,18 +48,17 @@ Library
         Data.Map.Lazy
         Data.Map.Strict
         Data.Set
-    if !impl(nhc98)
-        exposed-modules:
-            Data.Graph
-            Data.Sequence
-            Data.Tree
-    other-modules:
         Data.BitUtil
         Data.IntMap.Base
         Data.IntSet.Base
         Data.Map.Base
         Data.Set.Base
         Data.StrictPair
+    if !impl(nhc98)
+        exposed-modules:
+            Data.Graph
+            Data.Sequence
+            Data.Tree
 
     include-dirs: include
 
